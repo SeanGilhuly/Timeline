@@ -10,6 +10,8 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
 
+    
+    
     //MARK: - IBOutlet
     @IBOutlet weak var postImageView: UIImageView!
     
@@ -21,7 +23,8 @@ class PostTableViewCell: UITableViewCell {
     // MARK: - Function
     
     func updateWithPost(post: Post) {
-        postImageView.image = post.photo
+        guard let photoData = post.photoData else { return }
+        postImageView.image = UIImage(data: photoData)
     }
 
 }

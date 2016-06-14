@@ -24,13 +24,14 @@ class PostController {
     }
     
     func createPost(image: UIImage, caption: String) {
-        _ = Post(
+        guard let data = UIImageJPEGRepresentation(image, 0.9) else { return }
+        let newPost = Post(photoData: data)
+        addCommentToPost(caption, post: newPost)
         saveContext()
     }
     
     func addCommentToPost(text: String, post: Post) {
+        _ = Comment(post: post, text: text)
         saveContext()
     }
-    
-    
 }

@@ -18,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ux8-BS-Tbt" id="0GO-As-jYU">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dMv-b9-h2d">
@@ -34,7 +34,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="postImageView" destination="dMv-b9-h2d" id="eaV-P3-Ddg"/>
-                                    <segue destination="bGf-dX-Owh" kind="show" identifier="toPostDetail" id="ej2-Nr-xA1"/>
+                                    <segue destination="bGf-dX-Owh" kind="show" identifier="toPostDetailSegue" id="ej2-Nr-xA1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,10 +67,10 @@
                             <tableViewSection headerTitle="Section-1" id="aZ6-Je-NPO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="gUr-3x-HGK">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="200"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gUr-3x-HGK" id="JH6-gG-JJp">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eds-V3-GF0">
@@ -93,10 +93,10 @@
                             <tableViewSection headerTitle="Section-2" id="wwY-ed-aln">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i9w-zQ-R9b">
-                                        <rect key="frame" x="0.0" y="364" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="363.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i9w-zQ-R9b" id="pLg-mX-4zb">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4XN-dF-MMq">
@@ -118,10 +118,10 @@
                             <tableViewSection headerTitle="Section-3" id="fXa-XH-TJn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jpr-m3-pb8">
-                                        <rect key="frame" x="0.0" y="458" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="457.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jpr-m3-pb8" id="w2P-iA-u3O">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXU-9d-SpH">
@@ -181,11 +181,23 @@
                                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvQ-SZ-lUp">
                                     <rect key="frame" x="0.0" y="256" width="600" height="44"/>
                                     <items>
-                                        <barButtonItem title="Comment" id="BP3-gT-dNu"/>
+                                        <barButtonItem title="Comment" id="BP3-gT-dNu">
+                                            <connections>
+                                                <action selector="commentButtonTapped:" destination="bGf-dX-Owh" id="9Hi-w5-Mho"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="VPX-Yb-gCo"/>
-                                        <barButtonItem title="Share" id="JFk-TN-e8c"/>
+                                        <barButtonItem title="Share" id="JFk-TN-e8c">
+                                            <connections>
+                                                <action selector="shareButtonTapped:" destination="bGf-dX-Owh" id="ZnU-4w-QvV"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Jmd-PK-Pap"/>
-                                        <barButtonItem title="Follow Post" id="5JX-4n-1Lx"/>
+                                        <barButtonItem title="Follow Post" id="5JX-4n-1Lx">
+                                            <connections>
+                                                <action selector="followPostTapped:" destination="bGf-dX-Owh" id="7IJ-2M-Vgk"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </items>
                                 </toolbar>
                             </subviews>
@@ -222,6 +234,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Post Detail" id="VLH-Xy-38V"/>
+                    <connections>
+                        <outlet property="followPostButton" destination="5JX-4n-1Lx" id="UPg-8f-xla"/>
+                        <outlet property="imageView" destination="mhP-HE-gJe" id="dP0-F5-0qt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pA-4D-zNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -240,7 +256,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TLl-ov-KUO" id="AXd-lQ-UGy">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -253,7 +269,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Jm-Gs-H6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="626" y="1111"/>
+            <point key="canvasLocation" x="642" y="1111"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sEv-ju-fzx">
@@ -295,6 +311,10 @@
         <scene sceneID="KrZ-6l-YyQ">
             <objects>
                 <viewController id="x5Q-oc-9MG" customClass="PhotoSelectViewController" customModule="Timeline" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Dv-Rn-Uxm"/>
+                        <viewControllerLayoutGuide type="bottom" id="xlZ-3J-orf"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ceP-dE-NdA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
