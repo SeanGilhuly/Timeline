@@ -28,6 +28,7 @@ class AddPostTableViewController: UITableViewController {
     
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
+        
     }
     
     

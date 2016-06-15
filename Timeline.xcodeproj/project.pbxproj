@@ -21,13 +21,14 @@
 		8B218F431D0F63CA00DAEB0F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F411D0F63CA00DAEB0F /* Model.xcdatamodeld */; };
 		8B218F4C1D0F706500DAEB0F /* Comment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F461D0F706500DAEB0F /* Comment+CoreDataProperties.swift */; };
 		8B218F4D1D0F706500DAEB0F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F471D0F706500DAEB0F /* Comment.swift */; };
-		8B218F4E1D0F706500DAEB0F /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F481D0F706500DAEB0F /* Post+CoreDataProperties.swift */; };
-		8B218F4F1D0F706500DAEB0F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F491D0F706500DAEB0F /* Post.swift */; };
 		8B218F501D0F706500DAEB0F /* SyncableObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F4A1D0F706500DAEB0F /* SyncableObject+CoreDataProperties.swift */; };
 		8B218F511D0F706500DAEB0F /* SyncableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F4B1D0F706500DAEB0F /* SyncableObject.swift */; };
 		8B218F541D0F8D7A00DAEB0F /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F531D0F8D7A00DAEB0F /* PostController.swift */; };
 		8B218F571D0F912A00DAEB0F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F561D0F912A00DAEB0F /* PostTableViewCell.swift */; };
 		8BDEE9A11D105191003850CE /* PhotoSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE9A01D105191003850CE /* PhotoSelectViewController.swift */; };
+		8BDEEA1B1D10CD22003850CE /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEEA1A1D10CD22003850CE /* SearchableRecord.swift */; };
+		8BDEEA221D10DB65003850CE /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEEA201D10DB65003850CE /* Post+CoreDataProperties.swift */; };
+		8BDEEA231D10DB65003850CE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEEA211D10DB65003850CE /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,13 +69,14 @@
 		8B218F421D0F63CA00DAEB0F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8B218F461D0F706500DAEB0F /* Comment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B218F471D0F706500DAEB0F /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		8B218F481D0F706500DAEB0F /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8B218F491D0F706500DAEB0F /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8B218F4A1D0F706500DAEB0F /* SyncableObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SyncableObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B218F4B1D0F706500DAEB0F /* SyncableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncableObject.swift; sourceTree = "<group>"; };
 		8B218F531D0F8D7A00DAEB0F /* PostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		8B218F561D0F912A00DAEB0F /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		8BDEE9A01D105191003850CE /* PhotoSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectViewController.swift; sourceTree = "<group>"; };
+		8BDEEA1A1D10CD22003850CE /* SearchableRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
+		8BDEEA201D10DB65003850CE /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8BDEEA211D10DB65003850CE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				68658B271CF8A1D60016C5CD /* AppDelegate.swift */,
 				68658B2B1CF8A1D60016C5CD /* Main.storyboard */,
+				8BDEEA1A1D10CD22003850CE /* SearchableRecord.swift */,
 				8B218F521D0F706E00DAEB0F /* Model */,
 				8B218F551D0F8D8400DAEB0F /* Controller */,
 				8B218F581D0F912E00DAEB0F /* View */,
@@ -159,9 +162,9 @@
 		8B218F441D0F63CE00DAEB0F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8BDEEA201D10DB65003850CE /* Post+CoreDataProperties.swift */,
+				8BDEEA211D10DB65003850CE /* Post.swift */,
 				8B218F461D0F706500DAEB0F /* Comment+CoreDataProperties.swift */,
-				8B218F481D0F706500DAEB0F /* Post+CoreDataProperties.swift */,
-				8B218F491D0F706500DAEB0F /* Post.swift */,
 				8B218F471D0F706500DAEB0F /* Comment.swift */,
 				8B218F4A1D0F706500DAEB0F /* SyncableObject+CoreDataProperties.swift */,
 				8B218F4B1D0F706500DAEB0F /* SyncableObject.swift */,
@@ -342,15 +345,16 @@
 				8B218F381D0F5FD700DAEB0F /* PostListTableViewController.swift in Sources */,
 				8B218F571D0F912A00DAEB0F /* PostTableViewCell.swift in Sources */,
 				8BDEE9A11D105191003850CE /* PhotoSelectViewController.swift in Sources */,
-				8B218F4F1D0F706500DAEB0F /* Post.swift in Sources */,
+				8BDEEA231D10DB65003850CE /* Post.swift in Sources */,
 				8B218F3C1D0F614800DAEB0F /* AddPostTableViewController.swift in Sources */,
 				8B218F4C1D0F706500DAEB0F /* Comment+CoreDataProperties.swift in Sources */,
-				8B218F4E1D0F706500DAEB0F /* Post+CoreDataProperties.swift in Sources */,
 				8B218F501D0F706500DAEB0F /* SyncableObject+CoreDataProperties.swift in Sources */,
 				8B218F401D0F63AB00DAEB0F /* Stack.swift in Sources */,
 				8B218F431D0F63CA00DAEB0F /* Model.xcdatamodeld in Sources */,
+				8BDEEA221D10DB65003850CE /* Post+CoreDataProperties.swift in Sources */,
 				8B218F3E1D0F633A00DAEB0F /* SearchResultsTableViewController.swift in Sources */,
 				8B218F3A1D0F605700DAEB0F /* PostDetailTableViewController.swift in Sources */,
+				8BDEEA1B1D10CD22003850CE /* SearchableRecord.swift in Sources */,
 				8B218F541D0F8D7A00DAEB0F /* PostController.swift in Sources */,
 				8B218F4D1D0F706500DAEB0F /* Comment.swift in Sources */,
 				68658B281CF8A1D60016C5CD /* AppDelegate.swift in Sources */,

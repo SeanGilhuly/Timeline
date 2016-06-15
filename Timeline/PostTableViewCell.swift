@@ -26,5 +26,4 @@ class PostTableViewCell: UITableViewCell {
         guard let photoData = post.photoData else { return }
         postImageView.image = UIImage(data: photoData)
     }
-
 }
