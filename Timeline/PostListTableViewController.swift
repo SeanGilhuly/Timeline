@@ -17,7 +17,7 @@ class PostListTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         setUpFetchedResultsController()
         
         setUpSearchController()
@@ -31,17 +31,17 @@ class PostListTableViewController: UITableViewController, NSFetchedResultsContro
         let timeSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
         
         request.returnsObjectsAsFaults = false
-
+        
         request.sortDescriptors = [timeSortDescriptor]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Stack.sharedStack.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Stack.sharedStack.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
         do {
-            try fetchedResultsController.performFetch()
+            try fetchedResultsController?.performFetch()
         } catch let error as NSError {
             print("Unable to perform fetch request: \(error.localizedDescription)")
         }
-        fetchedResultsController.delegate = self
+        fetchedResultsController?.delegate = self
     }
     
     func setUpSearchController() {
@@ -59,13 +59,12 @@ class PostListTableViewController: UITableViewController, NSFetchedResultsContro
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         
         if let resultsViewController = searchController.searchResultsController as? SearchResultsTableViewController,
-        let searchTerm = searchController.searchBar.text?.lowercaseString,
+            let searchTerm = searchController.searchBar.text?.lowercaseString,
             let posts = fetchedResultsController?.fetchedObjects as? [Post] {
             resultsViewController.resultsArray = posts.filter({$0.matchesSearchTerm(searchTerm)})
             resultsViewController.tableView.reloadData()
         }
     }
-    
     
     // MARK: - Table view data source
     
@@ -82,15 +81,15 @@ class PostListTableViewController: UITableViewController, NSFetchedResultsContro
         return sectionInfo.numberOfObjects
     }
     
-    /*
-     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("postCell", forIndexPath: indexPath) as? PostTableViewCell ?? PostTableViewCell()
+        
+        guard let post = fetchedResultsController?.objectAtIndexPath(indexPath) as? Post else { return PostTableViewCell() }
+        
+        cell.updateWithPost(post)
+        
+        return cell
+    }
     
     /*
      // Override to support conditional editing of the table view.
@@ -154,7 +153,7 @@ class PostListTableViewController: UITableViewController, NSFetchedResultsContro
             }
         }
     }
-
+    
     
     // MARK: - Delegate Methods:
     

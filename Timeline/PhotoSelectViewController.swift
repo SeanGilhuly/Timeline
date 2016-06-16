@@ -9,7 +9,6 @@
 import UIKit
 
 class PhotoSelectViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     
     // MARK: - IBOutlets 
     
@@ -32,7 +31,7 @@ class PhotoSelectViewController: UIViewController, UIImagePickerControllerDelega
         let alert = UIAlertController(title: "Select Photo Location", message: nil, preferredStyle: .ActionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
-            alert.addAction(UIAlertAction(title: "Photo Libray", style: .Default, handler: { (_) in
+            alert.addAction(UIAlertAction(title: "Photo Library", style: .Default, handler: { (_) in
                 imagePicker.sourceType = .PhotoLibrary
                 self.presentViewController(imagePicker, animated: true, completion: nil)
             }))
@@ -50,7 +49,14 @@ class PhotoSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        <#code#>
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            delegate?.photoSelectViewControllerSelectedImage(image)
+            addPhotoButton.setTitle("", forState: .Normal)
+            imageView.image = image
+        }
     }
 }
 

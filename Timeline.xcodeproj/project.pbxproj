@@ -165,14 +165,14 @@
 		8B218F441D0F63CE00DAEB0F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8B218F3F1D0F63AB00DAEB0F /* Stack.swift */,
+				8B218F411D0F63CA00DAEB0F /* Model.xcdatamodeld */,
 				8BF8A6C71D120033008AD3B0 /* Post+CoreDataProperties.swift */,
 				8BDEEA211D10DB65003850CE /* Post.swift */,
 				8B218F461D0F706500DAEB0F /* Comment+CoreDataProperties.swift */,
 				8B218F471D0F706500DAEB0F /* Comment.swift */,
 				8B218F4A1D0F706500DAEB0F /* SyncableObject+CoreDataProperties.swift */,
 				8B218F4B1D0F706500DAEB0F /* SyncableObject.swift */,
-				8B218F411D0F63CA00DAEB0F /* Model.xcdatamodeld */,
-				8B218F3F1D0F63AB00DAEB0F /* Stack.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";

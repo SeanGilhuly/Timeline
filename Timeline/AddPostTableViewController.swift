@@ -10,12 +10,11 @@ import UIKit
 
 class AddPostTableViewController: UITableViewController {
 
-    // MARK: - IBOutlet
-    
-    @IBOutlet weak var captionTextField: UITextField!
+    // MARK: - IBOutlet and Property
     
     var image: UIImage?
     
+    @IBOutlet weak var captionTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +25,33 @@ class AddPostTableViewController: UITableViewController {
     
     @IBAction func addPostTapped(sender: AnyObject) {
         
-        
+        if let image = image,
+            let caption = captionTextField.text {
+            
+            PostController.sharedController.createPost(image, caption: caption)
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            
+            let alertController = UIAlertController(title: "Missing Information", message: "You did not add an image and caption.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+            
+            presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
-        
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       
+        if segue.identifier == "embedPhotoSelect" {
+            let photoSelectVC = segue.destinationViewController as? PhotoSelectViewController
+            photoSelectVC?.delegate = self
+        }
     }
 }
 
@@ -51,8 +63,4 @@ extension AddPostTableViewController: PhotoSelectViewControllerDelegate {
         self.image = image
         
     }
-    
 }
-
-
-

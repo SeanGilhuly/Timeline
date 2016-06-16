@@ -250,18 +250,32 @@
         <scene sceneID="Nsy-YJ-WxM">
             <objects>
                 <tableViewController storyboardIdentifier="SearchResultsTableViewController" id="OOd-39-7tN" customClass="SearchResultsTableViewController" customModule="Timeline" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TsE-iL-b8p">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" sectionHeaderHeight="28" sectionFooterHeight="28" id="TsE-iL-b8p">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultCell" id="TLl-ov-KUO">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultCell" rowHeight="300" id="TLl-ov-KUO" customClass="PostTableViewCell" customModule="Timeline" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TLl-ov-KUO" id="AXd-lQ-UGy">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WVA-dp-gPm">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="WVA-dp-gPm" firstAttribute="top" secondItem="AXd-lQ-UGy" secondAttribute="top" id="ART-bU-xcI"/>
+                                        <constraint firstItem="WVA-dp-gPm" firstAttribute="leading" secondItem="AXd-lQ-UGy" secondAttribute="leading" id="XL6-rO-Tpm"/>
+                                        <constraint firstAttribute="bottom" secondItem="WVA-dp-gPm" secondAttribute="bottom" id="dVG-rY-iQn"/>
+                                        <constraint firstAttribute="trailing" secondItem="WVA-dp-gPm" secondAttribute="trailing" id="f37-pf-vkd"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="postImageView" destination="WVA-dp-gPm" id="krl-MS-1Na"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -356,6 +370,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Kfn-E1-na5"/>
+        <segue reference="ej2-Nr-xA1"/>
     </inferredMetricsTieBreakers>
 </document>
