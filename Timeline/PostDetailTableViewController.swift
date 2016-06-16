@@ -63,8 +63,8 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
     
     
     @IBAction func shareButtonTapped(sender: AnyObject) {
+     //   TODO: this is what allows yuou to show ie. facebook, twitter, (UIActivityVC)
     }
-    
     @IBAction func followPostTapped(sender: AnyObject) {
     }
     

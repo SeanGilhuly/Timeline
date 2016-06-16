@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoSelectViewController: UIViewController {
+class PhotoSelectViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
     // MARK: - IBOutlets 
@@ -16,25 +16,46 @@ class PhotoSelectViewController: UIViewController {
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    weak var delegate: PhotoSelectViewControllerDelegate?
 
     // MARK: - IBAction
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func selectImageButtonTapped(sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let alert = UIAlertController(title: "Select Photo Location", message: nil, preferredStyle: .ActionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            alert.addAction(UIAlertAction(title: "Photo Libray", style: .Default, handler: { (_) in
+                imagePicker.sourceType = .PhotoLibrary
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }))
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            alert.addAction(UIAlertAction(title: "Camera", style: .Default, handler: { (_) in
+                imagePicker.sourceType = .Camera
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }))
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        
+        presentViewController(alert, animated: true, completion: nil)
     }
-    */
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        <#code#>
+    }
+}
 
+protocol PhotoSelectViewControllerDelegate: class {
+    
+    func photoSelectViewControllerSelectedImage(image: UIImage)
+    
 }

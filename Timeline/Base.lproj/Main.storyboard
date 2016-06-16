@@ -50,6 +50,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="bGf-dX-Owh" kind="show" identifier="toPostDetailFromSearch" id="Kfn-E1-na5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWP-YV-UC1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Section-1" id="aZ6-Je-NPO">
+                            <tableViewSection headerTitle="Picture" id="aZ6-Je-NPO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="gUr-3x-HGK">
                                         <rect key="frame" x="0.0" y="114" width="600" height="200"/>
@@ -90,7 +93,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-2" id="wwY-ed-aln">
+                            <tableViewSection headerTitle="Text" id="wwY-ed-aln">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i9w-zQ-R9b">
                                         <rect key="frame" x="0.0" y="364" width="600" height="44"/>
@@ -115,7 +118,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-3" id="fXa-XH-TJn">
+                            <tableViewSection headerTitle="Add Button:" id="fXa-XH-TJn" userLabel="Add">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jpr-m3-pb8">
                                         <rect key="frame" x="0.0" y="458" width="600" height="44"/>
@@ -246,7 +249,7 @@
         <!--Search Results Table View Controller-->
         <scene sceneID="Nsy-YJ-WxM">
             <objects>
-                <tableViewController id="OOd-39-7tN" customClass="SearchResultsTableViewController" customModule="Timeline" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchResultsTableViewController" id="OOd-39-7tN" customClass="SearchResultsTableViewController" customModule="Timeline" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TsE-iL-b8p">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -321,7 +324,10 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUv-0y-yk1" userLabel="Add Photo Button">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Select Photo"/>
+                                <connections>
+                                    <action selector="selectImageButtonTapped:" destination="x5Q-oc-9MG" eventType="touchUpInside" id="Hif-PR-u05"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IRw-9S-num">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
@@ -349,4 +355,7 @@
             <point key="canvasLocation" x="2138" y="1626"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Kfn-E1-na5"/>
+    </inferredMetricsTieBreakers>
 </document>
