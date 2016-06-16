@@ -32,7 +32,6 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
         if let post = post {
             updateWithPost(post)
         }
-        
     }
    
 
