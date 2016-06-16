@@ -174,37 +174,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" id="i3Y-d3-WmW">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Toz-FN-cTb">
                             <rect key="frame" x="0.0" y="64" width="600" height="300"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mhP-HE-gJe">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="256"/>
-                                </imageView>
-                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvQ-SZ-lUp">
-                                    <rect key="frame" x="0.0" y="256" width="600" height="44"/>
-                                    <items>
-                                        <barButtonItem title="Comment" id="BP3-gT-dNu">
-                                            <connections>
-                                                <action selector="commentButtonTapped:" destination="bGf-dX-Owh" id="9Hi-w5-Mho"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="VPX-Yb-gCo"/>
-                                        <barButtonItem title="Share" id="JFk-TN-e8c">
-                                            <connections>
-                                                <action selector="shareButtonTapped:" destination="bGf-dX-Owh" id="ZnU-4w-QvV"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Jmd-PK-Pap"/>
-                                        <barButtonItem title="Follow Post" id="5JX-4n-1Lx">
-                                            <connections>
-                                                <action selector="followPostTapped:" destination="bGf-dX-Owh" id="7IJ-2M-Vgk"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </items>
-                                </toolbar>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MH7-Az-bIG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MXg-aI-jqj">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="256"/>
+                                        </imageView>
+                                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VeZ-vZ-TUK">
+                                            <rect key="frame" x="0.0" y="256" width="600" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="UIN-G1-OvO"/>
+                                            </constraints>
+                                            <items>
+                                                <barButtonItem title="Share" id="JwT-cb-EJM">
+                                                    <connections>
+                                                        <action selector="shareButtonTapped:" destination="bGf-dX-Owh" id="UEC-Jz-muz"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem style="plain" systemItem="flexibleSpace" id="aKY-cK-kT9"/>
+                                                <barButtonItem title="Follow Post" id="YPI-LW-Duu">
+                                                    <connections>
+                                                        <action selector="followPostTapped:" destination="bGf-dX-Owh" id="Iyp-KO-gwy"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem style="plain" systemItem="flexibleSpace" id="igB-6s-1kQ"/>
+                                                <barButtonItem title="Comment" id="YQo-sK-Fsl">
+                                                    <connections>
+                                                        <action selector="commentButtonTapped:" destination="bGf-dX-Owh" id="XZU-LR-zYY"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </items>
+                                        </toolbar>
+                                    </subviews>
+                                </stackView>
                             </subviews>
-                        </stackView>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="MH7-Az-bIG" firstAttribute="top" secondItem="Toz-FN-cTb" secondAttribute="top" id="6Pw-cI-wNs"/>
+                                <constraint firstAttribute="bottom" secondItem="MH7-Az-bIG" secondAttribute="bottom" id="Ezx-sR-3F8"/>
+                                <constraint firstItem="MH7-Az-bIG" firstAttribute="leading" secondItem="Toz-FN-cTb" secondAttribute="leading" id="YU7-Rx-Pzs"/>
+                                <constraint firstAttribute="trailing" secondItem="MH7-Az-bIG" secondAttribute="trailing" id="lCP-XY-Gcp"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" textLabel="CMv-UJ-Leq" detailTextLabel="9YJ-We-ifw" style="IBUITableViewCellStyleSubtitle" id="14A-R4-cb1">
                                 <rect key="frame" x="0.0" y="392" width="600" height="44"/>
@@ -238,8 +253,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Post Detail" id="VLH-Xy-38V"/>
                     <connections>
-                        <outlet property="followPostButton" destination="5JX-4n-1Lx" id="UPg-8f-xla"/>
-                        <outlet property="imageView" destination="mhP-HE-gJe" id="dP0-F5-0qt"/>
+                        <outlet property="followPostButton" destination="YPI-LW-Duu" id="FEV-Aw-bxB"/>
+                        <outlet property="imageView" destination="MXg-aI-jqj" id="yWa-Ro-RhE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pA-4D-zNV" userLabel="First Responder" sceneMemberID="firstResponder"/>

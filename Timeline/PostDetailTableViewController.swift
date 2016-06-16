@@ -15,7 +15,7 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
     
     var post: Post?
     
-    var fetechedResultsController = NSFetchedResultsController()
+    var fetchedResultsController = NSFetchedResultsController()
     
     // MARK: - IBOutlets
     
@@ -34,6 +34,8 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
         }
         
     }
+   
+
     
     // MARK: - IBActions
     
@@ -63,9 +65,34 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
     
     
     @IBAction func shareButtonTapped(sender: AnyObject) {
-     //   TODO: this is what allows yuou to show ie. facebook, twitter, (UIActivityVC)
+        let alertController = UIAlertController(title: "Add Comment", message: nil, preferredStyle: .Alert)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            
+            textField.placeholder = "Nice shot!"
+        }
+        
+        let addCommentAction = UIAlertAction(title: "Add Comment", style: .Default) { (action) in
+            
+            guard let commentText = alertController.textFields?.first?.text,
+                let post = self.post else { return }
+            
+            PostController.sharedController.addCommentToPost(commentText, post: post)
+        }
+        
+        alertController.addAction(addCommentAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
+        
+
     @IBAction func followPostTapped(sender: AnyObject) {
+        guard let post = post else { return }
+        
+        self.updateWithPost(post)
     }
     
     
@@ -73,25 +100,12 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
     
     func updateWithPost(post: Post) {
         
+        imageView.image = post.photo
     }
     
     
 
     
     
-    // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-        guard let sessions = fetechedResultsController.sections else { return 1 }
-        
-        return sessions.count
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = fetechedResultsController.sections else { return 1 }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
-        
-    }
 }

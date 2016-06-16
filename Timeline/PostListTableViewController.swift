@@ -131,7 +131,7 @@ class PostListTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "toPostDetail" {
+        if segue.identifier == "toPostDetailSegue" {
             
             guard let detailViewController = segue.destinationViewController as? PostDetailTableViewController,
                 selectedIndexPath = self.tableView.indexPathForSelectedRow,

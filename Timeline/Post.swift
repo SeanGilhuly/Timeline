@@ -30,6 +30,8 @@ class Post: SyncableObject, SearchableRecord {
         return UIImage(data: photoData)
     }
     
+    
+    
     //MARK: - SearchableRecord Protocol
     
     func matchesSearchTerm(searchTerm: String) -> Bool {
