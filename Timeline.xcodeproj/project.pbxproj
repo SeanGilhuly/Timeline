@@ -27,6 +27,7 @@
 		8B218F541D0F8D7A00DAEB0F /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F531D0F8D7A00DAEB0F /* PostController.swift */; };
 		8B218F571D0F912A00DAEB0F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B218F561D0F912A00DAEB0F /* PostTableViewCell.swift */; };
 		8B9B8C7C1D1339CC00767A7C /* CloudKitManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B8C7B1D1339CC00767A7C /* CloudKitManagedObject.swift */; };
+		8BB76D601D189A5E00A29A58 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB76D5F1D189A5E00A29A58 /* CloudKit.framework */; };
 		8BDEE9A11D105191003850CE /* PhotoSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEE9A01D105191003850CE /* PhotoSelectViewController.swift */; };
 		8BDEEA1B1D10CD22003850CE /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEEA1A1D10CD22003850CE /* SearchableRecord.swift */; };
 		8BDEEA231D10DB65003850CE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDEEA211D10DB65003850CE /* Post.swift */; };
@@ -77,6 +78,8 @@
 		8B218F531D0F8D7A00DAEB0F /* PostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		8B218F561D0F912A00DAEB0F /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		8B9B8C7B1D1339CC00767A7C /* CloudKitManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManagedObject.swift; sourceTree = "<group>"; };
+		8BB76D5E1D189A5800A29A58 /* Timeline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timeline.entitlements; sourceTree = "<group>"; };
+		8BB76D5F1D189A5E00A29A58 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8BDEE9A01D105191003850CE /* PhotoSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectViewController.swift; sourceTree = "<group>"; };
 		8BDEEA1A1D10CD22003850CE /* SearchableRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
 		8BDEEA211D10DB65003850CE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB76D601D189A5E00A29A58 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +115,7 @@
 		68658B1B1CF8A1D60016C5CD = {
 			isa = PBXGroup;
 			children = (
+				8BB76D5F1D189A5E00A29A58 /* CloudKit.framework */,
 				68658B261CF8A1D60016C5CD /* Timeline */,
 				68658B3B1CF8A1D60016C5CD /* TimelineTests */,
 				68658B461CF8A1D60016C5CD /* TimelineUITests */,
@@ -131,11 +136,11 @@
 		68658B261CF8A1D60016C5CD /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				8BB76D5E1D189A5800A29A58 /* Timeline.entitlements */,
 				68658B271CF8A1D60016C5CD /* AppDelegate.swift */,
 				8B1690301D11BA9F00910934 /* CloudKitManager.swift */,
-				8B9B8C7B1D1339CC00767A7C /* CloudKitManagedObject.swift */,
 				68658B2B1CF8A1D60016C5CD /* Main.storyboard */,
-				8BDEEA1A1D10CD22003850CE /* SearchableRecord.swift */,
+				8BB76D5D1D18677600A29A58 /* Protocols */,
 				8B218F521D0F706E00DAEB0F /* Model */,
 				8B218F551D0F8D8400DAEB0F /* Controller */,
 				8B218F581D0F912E00DAEB0F /* View */,
@@ -216,6 +221,15 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		8BB76D5D1D18677600A29A58 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8B9B8C7B1D1339CC00767A7C /* CloudKitManagedObject.swift */,
+				8BDEEA1A1D10CD22003850CE /* SearchableRecord.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -284,6 +298,12 @@
 				TargetAttributes = {
 					68658B231CF8A1D60016C5CD = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6AWSLUNK93;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					68658B371CF8A1D60016C5CD = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -509,9 +529,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Timeline/Timeline.entitlements;
 				INFOPLIST_FILE = Timeline/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.devmountain.Timeline;
+				PRODUCT_BUNDLE_IDENTIFIER = com.seangilhuly.Timeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -520,9 +541,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Timeline/Timeline.entitlements;
 				INFOPLIST_FILE = Timeline/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.devmountain.Timeline;
+				PRODUCT_BUNDLE_IDENTIFIER = com.seangilhuly.Timeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

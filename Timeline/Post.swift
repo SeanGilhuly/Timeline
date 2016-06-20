@@ -15,6 +15,7 @@ import CloudKit
 class Post: SyncableObject, SearchableRecord, CloudKitManagedObject {
     
     static let typeKey = "Post"
+    
     static let photoDataKey = "photoData"
     static let timestampKey = "timestamp"
     
@@ -27,7 +28,7 @@ class Post: SyncableObject, SearchableRecord, CloudKitManagedObject {
         
         self.photoData = photoData
         self.timestamp = timestamp
-        self.recordName = NSUUID().UUIDString
+        self.recordName = self.nameForManagedObject()
     }
     
     // MARK: - Computed Properties
@@ -37,8 +38,16 @@ class Post: SyncableObject, SearchableRecord, CloudKitManagedObject {
         return UIImage(data: photoData)
     }
     
-    var recordType: String {
-        return Post.typeKey
+    var recordType: String = "Post"
+    
+    var cloudKitRecord: CKRecord? {
+        let recordID = CKRecordID(recordName: recordName)
+        let record = CKRecord(recordType: recordType, recordID: recordID)
+        
+        record["timestamp"] = timestamp
+        record["photoData"] = CKAsset(fileURL: temporaryPhotoURL)
+        
+        return record
     }
     
     lazy var temporaryPhotoURL: NSURL = {
@@ -54,16 +63,23 @@ class Post: SyncableObject, SearchableRecord, CloudKitManagedObject {
         return fileURL
     }()
     
-    var cloudKitRecord: CKRecord? {
-        let recordID = CKRecordID(recordName: recordName)
-        let record = CKRecord(recordType: recordType, recordID: recordID)
+    convenience required init?(record: CKRecord, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
+        guard let timestamp = record.creationDate,
+            photoData = record["photoData"] as? CKAsset else {
+                return nil
+        }
         
-        record[Post.timestampKey] = timestamp
-        record[Post.photoDataKey] = CKAsset(fileURL: temporaryPhotoURL)
+        guard let entity = NSEntityDescription.entityForName("Post", inManagedObjectContext: context) else {
+            fatalError("Error: CoreData Failed to create entity from entity description. \(#function)")
+        }
         
-        return record
+        self.init(entity: entity, insertIntoManagedObjectContext: context)
+        
+        self.timestamp = timestamp
+        self.photoData = NSData(contentsOfURL: photoData.fileURL)
+        self.recordIDData = NSKeyedArchiver.archivedDataWithRootObject(record.recordID)
+        self.recordName = record.recordID.recordName
     }
-    
     
     //MARK: - SearchableRecord Protocol
     

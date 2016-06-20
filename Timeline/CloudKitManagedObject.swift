@@ -7,8 +7,9 @@
 //
 
 import Foundation
-import CloudKit
 import CoreData
+
+import CloudKit
 
 @objc protocol CloudKitManagedObject {
     
@@ -17,7 +18,8 @@ import CoreData
     var recordName: String { get set }
     
     var recordType: String { get }
-    var cloudKitRecord: CKRecord? { get }
+    
+    var cloudKitRecord: CKRecord? { get }  // CoreData version of dictionaryCopy
     
     init?(record: CKRecord, context: NSManagedObjectContext)
 }
@@ -28,12 +30,12 @@ extension CloudKitManagedObject {
         return recordIDData != nil
     }
     
+    // Transform NSData to a CKRecordID (serialization)
     var cloudKitRecordID: CKRecordID? {
         guard let recordIDData = recordIDData,
         let recordID = NSKeyedUnarchiver.unarchiveObjectWithData(recordIDData) as? CKRecordID else {
             return nil
         }
-        
         return recordID
     }
     
@@ -50,12 +52,29 @@ extension CloudKitManagedObject {
         do {
             try Stack.sharedStack.managedObjectContext.save()
         } catch {
-            print("Unable to save Managed Object Context: \(error)")
+            print("Unable to save Managed Object Context in \(#function) \(error)")
         }
     }
     
     func nameForManagedObject() -> String {
         return NSUUID().UUIDString
     }
-    
 }
+
+
+// As it relates to JSON API
+//
+//  CKRecord = [Key:Value]
+//  [CKRecordID: CKRecord]
+//
+// {
+// "CKRecordID": CKRecord {
+//      CKRecordID: CKRecord{}
+//      }
+// }
+
+
+
+
+
+

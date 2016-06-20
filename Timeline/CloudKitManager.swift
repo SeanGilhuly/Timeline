@@ -19,7 +19,7 @@ class CloudKitManager {
     
     init() {
         checkCloudKitAvailablity()
-        requestDiscoverabilityPermission()
+        //requestDiscoverabilityPermission()
     }
     
     // MARK: - User Info Discovery
@@ -302,7 +302,7 @@ class CloudKitManager {
             let dismissAction = UIAlertAction(title: "Okie dokie", style: .Cancel, handler: nil)
             
             alertController.addAction(dismissAction)
-          
+            
             
             if let appDelegate = UIApplication.sharedApplication().delegate,
                 let appWindow = appDelegate.window!,

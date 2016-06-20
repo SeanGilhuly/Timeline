@@ -29,6 +29,8 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 40
         
+        setUpFetchedResultsController()
+        
         if let post = post {
             updateWithPost(post)
         }
@@ -102,9 +104,20 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
         imageView.image = post.photo
     }
     
-    
-
-    
-    
-    
+    func setUpFetchedResultsController() {
+        guard let post = post else { fatalError("Unable to use Post to set up fetched results controller.") }
+        let request = NSFetchRequest(entityName: "Comment")
+        let predicate = NSPredicate(format: "post == %@", argumentArray: [post])
+        let dateSortDescription = NSSortDescriptor(key: "timestamp", ascending: true)
+        request.returnsObjectsAsFaults = false
+        request.predicate = predicate
+        request.sortDescriptors = [dateSortDescription]
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Stack.sharedStack.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Unable to perform fetch request: \(error.localizedDescription)")
+        }
+        fetchedResultsController.delegate = self
+    }  
 }
