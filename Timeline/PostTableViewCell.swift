@@ -9,8 +9,6 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-
-    
     
     //MARK: - IBOutlet
     @IBOutlet weak var postImageView: UIImageView!

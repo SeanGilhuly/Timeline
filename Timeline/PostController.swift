@@ -31,10 +31,12 @@ class PostController {
     // MARK - CRUD Functions
     
     func saveContext() {
+        let moc = Stack.sharedStack.managedObjectContext
         do {
-            try Stack.sharedStack.managedObjectContext.save()
+            try moc.save()
         } catch {
             print("Unable to save context: \(error)")
+            print("There was an error saving the context")
         }
     }
     
@@ -63,7 +65,7 @@ class PostController {
         if let cloudKitRecord = comment.cloudKitRecord {
             cloudKitManager.saveRecord(cloudKitRecord, completion: { (record, error) in
                 if let error = error {
-                    NSLog("Error saving cloudkit recrod for new comment)")
+                    NSLog("Error saving cloudkit recrod for new comment \(comment): \(error)")
                     return
                 }
                 guard let record = record else { return }
@@ -170,9 +172,6 @@ class PostController {
             }
         }
     }
-    
-    
-    
 }
 
 

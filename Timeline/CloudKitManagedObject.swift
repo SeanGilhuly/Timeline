@@ -60,21 +60,3 @@ extension CloudKitManagedObject {
         return NSUUID().UUIDString
     }
 }
-
-
-// As it relates to JSON API
-//
-//  CKRecord = [Key:Value]
-//  [CKRecordID: CKRecord]
-//
-// {
-// "CKRecordID": CKRecord {
-//      CKRecordID: CKRecord{}
-//      }
-// }
-
-
-
-
-
-

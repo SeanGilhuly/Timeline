@@ -35,8 +35,6 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
             updateWithPost(post)
         }
     }
-   
-
     
     // MARK: - IBActions
     
@@ -61,6 +59,7 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
         
+        alertController.view.setNeedsLayout()
         presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -88,8 +87,8 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
         
         presentViewController(alertController, animated: true, completion: nil)
     }
-        
-
+    
+    
     @IBAction func followPostTapped(sender: AnyObject) {
         guard let post = post else { return }
         
@@ -119,5 +118,79 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
             print("Unable to perform fetch request: \(error.localizedDescription)")
         }
         fetchedResultsController.delegate = self
-    }  
+    }
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        guard let sections = fetchedResultsController.sections else {return 1}
+        return sections.count
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let sections = fetchedResultsController.sections else { return 0 }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath)
+        
+        if let comment = fetchedResultsController.objectAtIndexPath(indexPath) as? Comment {
+            
+            cell.textLabel?.text = comment.text
+            //            cell.detailTextLabel?.text = comment.cloudKitRecordID?.recordName
+        }
+        
+        return cell
+    }
+    
+    
+    // MARK: - Delegate Methods:
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        switch type {
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Automatic)
+        default:
+            break
+        }
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Delete:
+            guard let indexPath = indexPath else {
+                return
+            }
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        case .Insert:
+            guard let newIndexPath = newIndexPath else {
+                return
+            }
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+        case .Move:
+            guard let indexPath = indexPath, newIndexPath = newIndexPath else {
+                return
+            }
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+        case .Update:
+            guard let indexPath = indexPath else {
+                return
+            }
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
 }

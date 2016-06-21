@@ -34,8 +34,11 @@ class Post: SyncableObject, SearchableRecord, CloudKitManagedObject {
     // MARK: - Computed Properties
     
     var photo: UIImage? {
-        guard let photoData = self.photoData else { return nil }
-        return UIImage(data: photoData)
+        if let photoData = self.photoData {
+            return UIImage(data: photoData)
+        } else {
+            return nil
+        }
     }
     
     var recordType: String = "Post"
