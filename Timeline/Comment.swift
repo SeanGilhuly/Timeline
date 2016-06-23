@@ -13,6 +13,8 @@ import CloudKit
 class Comment: SyncableObject, SearchableRecord, CloudKitManagedObject {
     
     static let typeKey = "Comment"
+    static let postKey = "post"
+    
 
     convenience init(post: Post, text: String, timestamp: NSDate = NSDate(), context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
         

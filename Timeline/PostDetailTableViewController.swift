@@ -91,8 +91,9 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
     
     @IBAction func followPostTapped(sender: AnyObject) {
         guard let post = post else { return }
-        
-        self.updateWithPost(post)
+        PostController.sharedController.togglePostCommentsSubscription(post) { (success, isSubscribed, error) in
+            self.updateWithPost(post)
+        }
     }
     
     
@@ -101,6 +102,13 @@ class PostDetailTableViewController: UITableViewController, NSFetchedResultsCont
     func updateWithPost(post: Post) {
         
         imageView.image = post.photo
+        
+        PostController.sharedController.checkSubscriptionToPostComments(post) { (subscribed) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.followPostButton.title = subscribed ? "Unfollow Post" : "Follow Post"
+            })
+        }
+        
     }
     
     func setUpFetchedResultsController() {

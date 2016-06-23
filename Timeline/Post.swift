@@ -15,7 +15,7 @@ import CloudKit
 class Post: SyncableObject, SearchableRecord, CloudKitManagedObject {
     
     static let typeKey = "Post"
-    
+        
     static let photoDataKey = "photoData"
     static let timestampKey = "timestamp"
     
@@ -90,4 +90,14 @@ class Post: SyncableObject, SearchableRecord, CloudKitManagedObject {
         
         return (self.comments?.array as? [Comment])?.filter({ $0.matchesSearchTerm(searchTerm) }).count > 0
     }
+    
+
+    
 }
+
+
+
+
+
+
+
