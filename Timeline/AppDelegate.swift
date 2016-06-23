@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
-        guard let notificationInfo = userInfo as? [String:AnyObject] else { print("No record ID available from CKQueryNotification"); return }
+        guard let notificationInfo = userInfo as? [String:NSObject] else { print("No record ID available from CKQueryNotification"); return }
         
         let queryNotification = CKQueryNotification(fromRemoteNotificationDictionary: notificationInfo)
         
